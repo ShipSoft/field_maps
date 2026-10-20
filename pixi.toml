@@ -9,9 +9,9 @@ channels = ["https://prefix.dev/ship-experiment/stable", "conda-forge"]
 platforms = ["linux-64", "linux-aarch64"]
 
 [dependencies]
-# fairship_to_fieldmap and fieldmap_dump. 0.4.0 writes format v1.0 maps
-# with the --comment provenance used here.
-field-service-tools = ">=0.4.0"
+# fairship_to_fieldmap and fieldmap_dump. 0.5.0 adds --source, used to record
+# the FairShip file each map came from.
+field-service-tools = ">=0.5.0"
 python = ">=3.11"
 # PyROOT, to read the FairShip source files in the closure test.
 root = ">=6.36"
