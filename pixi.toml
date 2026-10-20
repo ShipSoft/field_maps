@@ -1,0 +1,53 @@
+# SPDX-FileCopyrightText: 2026 CERN for the benefit of the SHiP Collaboration
+#
+# SPDX-License-Identifier: LGPL-3.0-or-later
+
+[workspace]
+name = "field_maps"
+description = "SHiP magnetic field maps in the SHiP field-map format, with their placements"
+channels = ["https://prefix.dev/ship-experiment/stable", "conda-forge"]
+platforms = ["linux-64", "linux-aarch64"]
+
+[dependencies]
+# fairship_to_fieldmap and fieldmap_dump. 0.4.0 writes format v1.0 maps
+# with the --comment provenance used here.
+field-service-tools = ">=0.4.0"
+python = ">=3.11"
+# PyROOT, to read the FairShip source files in the closure test.
+root = ">=6.36"
+# Evaluates field_maps.libsonnet in the test.
+go-jsonnet = "*"
+
+[tasks]
+# Downloads the FairShip maps (cached under $TMPDIR/ship-field-maps) unless
+# --input-dir points at a FairShip checkout's files/ directory.
+build = "python scripts/build_maps.py --prefix build"
+test = { cmd = "python tests/check_maps.py --prefix build", depends-on = ["build"] }
+install = "python scripts/build_maps.py --prefix $CONDA_PREFIX"
+clean = "rm -rf build"
+
+[feature.lint.dependencies]
+prek = "*"
+python = ">=3.11"
+codespell = "*"
+reuse = "*"
+cffconvert = "*"
+commitizen = "*"
+ruff = "*"
+
+[feature.lint.tasks]
+lint = "prek run --all-files"
+# Install the git hooks and route them through `pixi run` so the conda-provided
+# hook tools are on PATH at commit time (required on NixOS, where the tools are
+# not runnable without pixi activation).
+install-hooks = '''
+prek install --hook-type pre-commit --hook-type commit-msg
+hooks=$(git rev-parse --git-path hooks)
+for h in pre-commit commit-msg; do
+  sed -i 's#"$PREK" hook-impl#pixi run -e lint prek hook-impl#' "$hooks/$h"
+done
+'''
+
+[environments]
+default = { solve-group = "default" }
+lint = { features = ["lint"], solve-group = "lint" }

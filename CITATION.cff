@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: If you use these field maps, please cite them as below.
+title: SHiP Field Maps
+version: 0.1.0
+url: https://github.com/ShipSoft/field_maps
+repository-code: https://github.com/ShipSoft/field_maps
+type: dataset
+license: LGPL-3.0-or-later
+authors:
+  - name: The SHiP Collaboration
+abstract: The SHiP muon shield and spectrometer magnetic field maps from FairShip, converted to the SHiP field-map format, with their placements in the SHiP geometry.
+keywords:
+  - physics
+  - particle-physics
+  - magnetic-field
+  - SHiP

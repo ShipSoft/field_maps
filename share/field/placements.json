@@ -1,0 +1,41 @@
+{
+  "format_version": 1,
+  "geometry": {
+    "package": "shipgeometry",
+    "version": "0.2.1"
+  },
+  "fairship": {
+    "repository": "https://github.com/ShipSoft/FairShip",
+    "commit": "01466dcceb1e4917e460ae221fe03afc46357367"
+  },
+  "maps": {
+    "muon_shield_TRY_2026": {
+      "file": "muon_shield_TRY_2026.root",
+      "source": "files/TRY_2026.root",
+      "sha256": "054a3aa40af9b16e6ff5d4c7e0e37bebe9663deb4057cdce7638149b9e7206b8",
+      "symmetry": "quadrant_dipole",
+      "comment": "Muon shield field map TRY_2026, quadrant x>=0, y>=0; origin at the shield entrance"
+    },
+    "spectrometer_V21_2455": {
+      "file": "spectrometer_V21_2455.root",
+      "source": "files/2026_07_02_MainSpectrometerField_V21_2455.root",
+      "sha256": "5d3d71813718f41825fd5fead594d2aff2260b77c909e6e71a808ac15c535c1e",
+      "symmetry": "none",
+      "comment": "Main spectrometer dipole field map V21_2455; origin at the magnet centre"
+    }
+  },
+  "magnets": [
+    {
+      "name": "MuonShield",
+      "volume_pattern": "/SHiP/muon_shield",
+      "map": "muon_shield_TRY_2026",
+      "translation": [0, 0, 2040]
+    },
+    {
+      "name": "Spectrometer",
+      "volume_pattern": "/SHiP/magnet",
+      "map": "spectrometer_V21_2455",
+      "translation": [0, 0, 89570]
+    }
+  ]
+}
