@@ -99,18 +99,19 @@ def main():
 
     for map_name, entry in manifest["maps"].items():
         src = source_file(entry, fairship, args.input_dir, args.cache_dir)
-        comment = (
-            f"{entry['comment']}. Converted from {fairship['repository']} "
-            f"{entry['source']} at {fairship['commit']}"
-        )
+        # Record the FairShip file at its pinned commit, not the local copy,
+        # which may be a cache or build directory.
+        source = f"{fairship['repository']}/blob/{fairship['commit']}/{entry['source']}"
         cmd = [
             args.converter,
             "--name",
             map_name,
             "--symmetry",
             entry["symmetry"],
+            "--source",
+            source,
             "--comment",
-            comment,
+            entry["comment"],
             str(src),
             str(out_dir / entry["file"]),
         ]
