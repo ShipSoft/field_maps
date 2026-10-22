@@ -2,7 +2,7 @@
   "format_version": 1,
   "geometry": {
     "package": "shipgeometry",
-    "version": "0.2.1"
+    "version": "0.3.0"
   },
   "fairship": {
     "repository": "https://github.com/ShipSoft/FairShip",
