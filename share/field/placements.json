@@ -2,7 +2,7 @@
   "format_version": 1,
   "geometry": {
     "package": "shipgeometry",
-    "version": "0.3.0"
+    "version": "0.4.0"
   },
   "fairship": {
     "repository": "https://github.com/ShipSoft/FairShip",
@@ -35,7 +35,7 @@
       "name": "Spectrometer",
       "volume_pattern": "/SHiP/magnet",
       "map": "spectrometer_V21_2455",
-      "translation": [0, 0, 89570]
+      "translation": [0, 0, 89720]
     }
   ]
 }
