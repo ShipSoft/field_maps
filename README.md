@@ -20,7 +20,7 @@ The package installs into `$PREFIX/share/field/`:
 | File | Map | Magnet | Placement (mm) | Symmetry |
 |---|---|---|---|---|
 | `muon_shield_TRY_2026.root` | `muon_shield_TRY_2026` | `/SHiP/muon_shield` | (0, 0, 2040) | quadrant dipole |
-| `spectrometer_V21_2455.root` | `spectrometer_V21_2455` | `/SHiP/magnet` | (0, 0, 89570) | none |
+| `spectrometer_V21_2455.root` | `spectrometer_V21_2455` | `/SHiP/magnet` | (0, 0, 89720) | none |
 | `placements.json` | | | | |
 | `field_maps.libsonnet` | | | | |
 
