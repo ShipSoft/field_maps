@@ -14,3 +14,5 @@ jobs:
       files: |
         AI_POLICY.md
         cliff.toml
+    secrets:
+      app-private-key: ${{ secrets.APP_PRIVATE_KEY }}
